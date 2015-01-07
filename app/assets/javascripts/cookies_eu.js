@@ -2,9 +2,10 @@
 //= require jquery.cookie
 
 $(document).ready(function() {
-  $('a').click(function(e) {
-    e.preventDefault();
-    $.cookie('cookie_eu_consented', 'true', { path: '/'});
-    $('.cookies-eu').remove();
-  });
+  if !$.cookie('cookie_eu_consented') {
+    $('a').click(function(e) {
+      $.cookie('cookie_eu_consented', 'true', { path: '/'});
+      $('.cookies-eu').remove();
+    });
+  }
 });
